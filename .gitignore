@@ -1,2 +1,4 @@
 .idea
 vendor/*
+pinocchio.json
+composer.lock
