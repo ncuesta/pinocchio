@@ -1,6 +1,8 @@
 {
     "name": "ncuesta/pinocchio",
     "type": "library",
+    "version": "0.1.0",
+    "homepage": "http://ncuesta.github.com/pinocchio",
     "description": "Annotated Source generator for PHP (port of Docco)",
     "keywords": ["annotated", "source", "documentation", "generator"],
     "license": "MIT",
