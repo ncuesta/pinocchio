@@ -20,7 +20,7 @@ namespace Pinocchio\Highlighter;
 interface HighlighterInterface
 {
     /**
-     * Hightlight the code $source considering that it has been written
+     * Highlight the code $source considering that it has been written
      * with the language provided.
      * This method should return the HTML snippet for the highlighted
      * source code.
