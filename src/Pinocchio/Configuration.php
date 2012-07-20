@@ -51,6 +51,14 @@ class Configuration
     protected $defaults;
 
     /**
+     * Pinocchio array of sources.
+     * This attribute acts as a simple cache.
+     *
+     * @var array
+     */
+    protected $sources;
+
+    /**
      * Constructor.
      *
      * @param array|\Clinner\ValueHolder $arguments (Optional) Arguments for the configuration.
@@ -98,14 +106,18 @@ class Configuration
     public function getSourceFiles()
     {
         $sourceFiles = array();
+        $ignore = $this->configuration->get('ignore');
 
         if (is_dir($this->get('source'))) {
             $recursiveIterator = new \RecursiveIteratorIterator(
                 new \RecursiveDirectoryIterator($this->get('source'))
             );
 
+            /** @var $file \SplFileInfo */
             foreach ($recursiveIterator as $file) {
-                $sourceFiles[$file->getFilename()] = $file->getPathname();
+                if (!preg_match($ignore, $file->getPathname())) {
+                    $sourceFiles[$file->getFilename()] = $file->getPathname();
+                }
             }
         }
 
@@ -120,19 +132,23 @@ class Configuration
      */
     public function getSources()
     {
-        $sources = array();
+        if (null === $this->sources) {
+            $sources = array();
 
-        foreach ($this->getSourceFiles() as $sourcePath) {
-            $sources[] = new Pinocchio($sourcePath);
+            foreach ($this->getSourceFiles() as $sourcePath) {
+                $sources[] = new Pinocchio($sourcePath);
+            }
+
+            $this->sources = $sources;
         }
 
-        return $sources;
+        return $this->sources;
     }
 
     /**
      * Set the arguments.
      *
-     * @param array|\Clinner\ValueHolder $arguments The new arguments
+     * @param  array|\Clinner\ValueHolder $arguments The new arguments
      *
      * @return \Pinocchio\Configuration
      */
@@ -151,10 +167,11 @@ class Configuration
     public function getDefaults()
     {
         return array(
-            'source'   => 'src',
-            'output'   => 'doc',
-            'template' => '/tmp/template.html',
-            'css'      => '/tmp/css.css',
+            'source'         => 'src',
+            'output'         => 'doc',
+            'template'       => __DIR__ . '/templates/template.php',
+            'css'            => array(__DIR__ . '/templates/styles.css'),
+            'ignore'         => '',
         );
     }
 

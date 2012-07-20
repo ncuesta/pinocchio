@@ -127,6 +127,18 @@ class Pinocchio
     }
 
     /**
+     * Get a code block at a specific offset.
+     *
+     * @param  int $index The offset to get.
+     *
+     * @return string
+     */
+    public function getCodeBlock($index)
+    {
+        return isset($this->codeBlocks[$index]) ? $this->codeBlocks[$index] : '';
+    }
+
+    /**
      * Get the documentation blocks.
      *
      * @return array
@@ -134,6 +146,18 @@ class Pinocchio
     public function getDocBlocks()
     {
         return $this->docBlocks;
+    }
+
+    /**
+     * Get a documentation block at a specific offset.
+     *
+     * @param  int $index The offset to get.
+     *
+     * @return string
+     */
+    public function getDocBlock($index)
+    {
+        return isset($this->docBlocks[$index]) ? $this->docBlocks[$index] : '';
     }
 
     /**

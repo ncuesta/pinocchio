@@ -68,11 +68,8 @@ class Formatter
     protected function apply($pinocchio)
     {
         $variables = array(
-            'title'     => $pinocchio->getTitle(),
-            'style'     => file_get_contents($this->configuration->get('css')),
-            'sources'   => array(),
-            'sections'  => array('code' => $pinocchio->getCodeBlocks(), 'docs' => $pinocchio->getDocBlocks()), // TODO: remove
-            'pinocchio' => $pinocchio,
+            'configuration' => $this->configuration,
+            'pinocchio'     => $pinocchio,
         );
 
         ob_start();

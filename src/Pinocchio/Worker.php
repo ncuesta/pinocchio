@@ -60,10 +60,9 @@ class Worker
         $outputDir = $this->configuration->get('output');
 
         foreach ($this->configuration->getSources() as $pinocchio) {
-            $formatter->format(
-                $parser->parse($pinocchio),
-                $outputDir . '/' . $pinocchio->getOutputFilename($outputDir)
-            );
+            $outputFile = $outputDir . '/' . $pinocchio->getOutputFilename($outputDir);
+
+            $formatter->format($parser->parse($pinocchio), $outputFile);
         }
     }
 
