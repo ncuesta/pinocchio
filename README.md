@@ -69,14 +69,14 @@ The order in which option sources are considered is:
 
 Here is a list of all the configuration options and their acceptable values:
 
-* **`source`** (`string`): The path to the source directory to crawl
+* `source` (`string`): The path to the source directory to crawl
   for sources.
-* **`output`** (`string`): The path to the output directory in which generated
+* `output` (`string`): The path to the output directory in which generated
   files will be saved.
-* **`template`** (`string`): The path to the template to use for each source
+* `template` (`string`): The path to the template to use for each source
   file.
-* **`css`** (`array`): A set of CSS files to use inside the template.
-* **`ignore`** (`string`): A regular expression that if matched by any path
+* `css` (`array`): A set of CSS files to use inside the template.
+* `ignore` (`string`): A regular expression that if matched by any path
   inside the `source` directory, will exclude such path from the crawled files.
 
 ### Configuration as arguments
@@ -113,11 +113,11 @@ All configuration values have a sensible default value so that you *don't have t
 configure anything. Here is a list of all the default values for the different
 configuration options:
 
-* **`source`**: `'src'`.
-* **`output`**: `'output'`.
-* **`template`**: A built-in template based on [Docco](http://jashkenas.github.com/docco)'s template.
-* **`css`**: A built-in stylesheet based on [Docco](http://jashkenas.github.com/docco)'s stylesheet.
-* **`ignore`**: `''` (an empty string). Nothing is ignored by default.
+* `source`: `'src'`.
+* `output`: `'output'`.
+* `template`: A built-in template based on [Docco](http://jashkenas.github.com/docco)'s template.
+* `css`: A built-in stylesheet based on [Docco](http://jashkenas.github.com/docco)'s stylesheet.
+* `ignore`: `''` (an empty string). Nothing is ignored by default.
 
 ## Contributing
 
