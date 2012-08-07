@@ -113,9 +113,8 @@ class Configuration
                 new \RecursiveDirectoryIterator($this->get('source'))
             );
 
-            /** @var $file \SplFileInfo */
             foreach ($recursiveIterator as $file) {
-                if (!preg_match($ignore, $file->getPathname())) {
+                if ($ignore && !preg_match($ignore, $file->getPathname())) {
                     $sourceFiles[$file->getFilename()] = $file->getPathname();
                 }
             }
