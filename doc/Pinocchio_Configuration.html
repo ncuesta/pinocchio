@@ -432,21 +432,8 @@ body .il { color: #666666 }                     /* Literal.Number.Integer.Long *
                 <span class="k">new</span> <span class="nx">\RecursiveDirectoryIterator</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;source&#39;</span><span class="p">))</span>
             <span class="p">);</span>
 
-            
-</pre></div>                            </td>
-                        </tr>
-                                            <tr id="section-10">
-                            <td class="docs">
-                                <div class="pilwrap">
-                                    <a class="pilcrow" href="#section-10">&#182;</a>
-                                </div>
-                                <p><em class="docparam">@var</em> <code>$file</code> \SplFileInfo </p>
-                            </td>
-                            <td class="code">
-                                <div class="highlight"><pre>
-
             <span class="k">foreach</span> <span class="p">(</span><span class="nv">$recursiveIterator</span> <span class="k">as</span> <span class="nv">$file</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">preg_match</span><span class="p">(</span><span class="nv">$ignore</span><span class="p">,</span> <span class="nv">$file</span><span class="o">-&gt;</span><span class="na">getPathname</span><span class="p">()))</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$ignore</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nb">preg_match</span><span class="p">(</span><span class="nv">$ignore</span><span class="p">,</span> <span class="nv">$file</span><span class="o">-&gt;</span><span class="na">getPathname</span><span class="p">()))</span> <span class="p">{</span>
                     <span class="nv">$sourceFiles</span><span class="p">[</span><span class="nv">$file</span><span class="o">-&gt;</span><span class="na">getFilename</span><span class="p">()]</span> <span class="o">=</span> <span class="nv">$file</span><span class="o">-&gt;</span><span class="na">getPathname</span><span class="p">();</span>
                 <span class="p">}</span>
             <span class="p">}</span>
@@ -458,10 +445,10 @@ body .il { color: #666666 }                     /* Literal.Number.Integer.Long *
     
 </pre></div>                            </td>
                         </tr>
-                                            <tr id="section-11">
+                                            <tr id="section-10">
                             <td class="docs">
                                 <div class="pilwrap">
-                                    <a class="pilcrow" href="#section-11">&#182;</a>
+                                    <a class="pilcrow" href="#section-10">&#182;</a>
                                 </div>
                                 <p>Get the set of source Pinocchios that represent the source files
  for the current instance.</p>
@@ -489,10 +476,10 @@ body .il { color: #666666 }                     /* Literal.Number.Integer.Long *
     
 </pre></div>                            </td>
                         </tr>
-                                            <tr id="section-12">
+                                            <tr id="section-11">
                             <td class="docs">
                                 <div class="pilwrap">
-                                    <a class="pilcrow" href="#section-12">&#182;</a>
+                                    <a class="pilcrow" href="#section-11">&#182;</a>
                                 </div>
                                 <p>Set the arguments.</p>
 
@@ -513,10 +500,10 @@ body .il { color: #666666 }                     /* Literal.Number.Integer.Long *
     
 </pre></div>                            </td>
                         </tr>
-                                            <tr id="section-13">
+                                            <tr id="section-12">
                             <td class="docs">
                                 <div class="pilwrap">
-                                    <a class="pilcrow" href="#section-13">&#182;</a>
+                                    <a class="pilcrow" href="#section-12">&#182;</a>
                                 </div>
                                 <p>Get the default value for the configuration.</p>
 
@@ -539,10 +526,10 @@ body .il { color: #666666 }                     /* Literal.Number.Integer.Long *
     
 </pre></div>                            </td>
                         </tr>
-                                            <tr id="section-14">
+                                            <tr id="section-13">
                             <td class="docs">
                                 <div class="pilwrap">
-                                    <a class="pilcrow" href="#section-14">&#182;</a>
+                                    <a class="pilcrow" href="#section-13">&#182;</a>
                                 </div>
                                 <p>Initialize the non-customizable part of the configuration.</p>
 
@@ -562,10 +549,10 @@ body .il { color: #666666 }                     /* Literal.Number.Integer.Long *
     
 </pre></div>                            </td>
                         </tr>
-                                            <tr id="section-15">
+                                            <tr id="section-14">
                             <td class="docs">
                                 <div class="pilwrap">
-                                    <a class="pilcrow" href="#section-15">&#182;</a>
+                                    <a class="pilcrow" href="#section-14">&#182;</a>
                                 </div>
                                 <p>Load the configuration from the file -if any- and return it.</p>
 
