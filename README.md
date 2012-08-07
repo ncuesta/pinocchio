@@ -35,6 +35,18 @@ Once you have that, you can `install` it providing the `--dev` flag:
 $ composer install --dev
 ```
 
+If Composer complains about stability issues, you might need to add a `minimum-stability`
+key to the `composer.json` file like follows:
+
+```json
+{
+    "require-dev": {
+        "ncuesta/pinocchio": "dev-master"
+    },
+    "minimum-stability": "dev"
+}
+```
+
 ## Usage
 
 Once installed via [Composer](http://getcomposer.org) you can use **Pinocchio**
