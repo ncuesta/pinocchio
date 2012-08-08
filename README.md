@@ -1,5 +1,7 @@
 # Pinocchio
 
+[![Build Status](https://secure.travis-ci.org/ncuesta/pinocchio.png?branch=master)](http://travis-ci.org/ncuesta/pinocchio)
+
 Annotated Source generator for PHP (port of [Docco](http://jashkenas.github.com/docco)). This library has been
 inspired by [Phrocco](https://github.com/oneblackbear/phrocco)
 
