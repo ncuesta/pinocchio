@@ -24,5 +24,6 @@
             "Pinocchio": "src"
         }
     },
+    "minimum-stability": "dev",
     "bin": ["bin/pinocchio"]
 }
