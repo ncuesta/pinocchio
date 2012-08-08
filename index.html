@@ -1,0 +1,219 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Pinocchio by ncuesta</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Pinocchio</h1>
+        <p>Annotated Source generator for PHP (port of Docco) </p>
+
+        <p class="view"><a href="https://github.com/ncuesta/pinocchio">View the Project on GitHub <small>ncuesta/pinocchio</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/ncuesta/pinocchio/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/ncuesta/pinocchio/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/ncuesta/pinocchio">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>Pinocchio</h1>
+
+<p><a href="http://travis-ci.org/ncuesta/pinocchio"><img src="https://secure.travis-ci.org/ncuesta/pinocchio.png?branch=master" alt="Build Status"></a></p>
+
+<p>Annotated Source generator for PHP (port of <a href="http://jashkenas.github.com/docco">Docco</a>). This library has been
+inspired by <a href="https://github.com/oneblackbear/phrocco">Phrocco</a></p>
+
+<p><strong>Pinocchio</strong> crawls the source files on a project and automatically generates
+annotated source HTML pages that serve both as self-documented projects and
+API-like documentation.</p>
+
+<h2>Key benefits</h2>
+
+<ul>
+<li>Easy to use</li>
+<li>Almost no requirements (only PHP &gt;= 5.3.6)</li>
+<li>Configurable and customizable</li>
+<li>Makes projects self-explaining</li>
+</ul><h2>Installation</h2>
+
+<p>You can install <strong>Pinocchio</strong> using <a href="http://getcomposer.org">Composer</a>. It is
+more likely that you'll use <strong>Pinocchio</strong> as a development library and not as
+one that will actually be required for the use of your project, so you might
+want to use it as a <code>dev</code> requirement in your <code>composer.json</code> file like this:</p>
+
+<div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">"require-dev"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"ncuesta/pinocchio"</span><span class="p">:</span> <span class="s2">"dev-master"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>Once you have that, you can <code>install</code> it providing the <code>--dev</code> flag:</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>composer install --dev
+</pre></div>
+
+<p>If Composer complains about stability issues, you might need to add a <code>minimum-stability</code>
+key to the <code>composer.json</code> file like follows:</p>
+
+<div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">"require-dev"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"ncuesta/pinocchio"</span><span class="p">:</span> <span class="s2">"dev-master"</span>
+    <span class="p">},</span>
+    <span class="nt">"minimum-stability"</span><span class="p">:</span> <span class="s2">"dev"</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2>Usage</h2>
+
+<p>Once installed via <a href="http://getcomposer.org">Composer</a> you can use <strong>Pinocchio</strong>
+directly from the command-line interface as follows. Please note that
+<code>vendor/bin/pinocchio</code> is the path to <strong>Pinocchio</strong>'s executable, and that
+<code>vendor/bin</code> is the directory in which <a href="http://getcomposer.org">Composer</a>
+installs any vendor binary files by default. If you have changed this path,
+be sure that you are running <strong>Pinocchio</strong> from your specific one.</p>
+
+<p>So, running:</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>php vendor/bin/pinocchio
+</pre></div>
+
+<p>will crawl for any source files under <code>./src</code> directory and will generate their corresponding annotated source files under <code>./output</code>. See below for further
+customization of this behavior.</p>
+
+<h2>Configuration</h2>
+
+<p><strong>Pinocchio</strong> can be configured in many ways. You can provide your configuration
+options when running the script, have your settings taken from a configuration
+file located on the root of your project, or a combination of both.</p>
+
+<p>The order in which option sources are considered is:</p>
+
+<ol>
+<li>Command-line arguments</li>
+<li>Configuration file values</li>
+<li>Default values</li>
+</ol><h3>Configuration options</h3>
+
+<p>Here is a list of all the configuration options and their acceptable values:</p>
+
+<ul>
+<li>
+<code>source</code> (<code>string</code>): The path to the source directory to crawl
+for sources.</li>
+<li>
+<code>output</code> (<code>string</code>): The path to the output directory in which generated
+files will be saved.</li>
+<li>
+<code>template</code> (<code>string</code>): The path to the template to use for each source
+file.</li>
+<li>
+<code>css</code> (<code>array</code>): A set of CSS files to use inside the template.</li>
+<li>
+<code>ignore</code> (<code>string</code>): A regular expression that if matched by any path
+inside the <code>source</code> directory, will exclude such path from the crawled files.</li>
+</ul><h3>Configuration as arguments</h3>
+
+<p>When running <strong>Pinocchio</strong> you can pass arguments that will be considered as
+configuration options. For instance:</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>php vendor/bin/pinocchio --source src --output annotated-source
+</pre></div>
+
+<p>Will tell <strong>Pinocchio</strong> that the <code>source</code> option has been set to <code>src</code> and
+<code>output</code> to <code>annotated-source</code>.</p>
+
+<h3>Configuration file</h3>
+
+<p>If a file named <code>pinocchio.json</code> is found at the directory in which you invoke
+<strong>Pinocchio</strong> (namely your project's root), it will be used as an configuration
+source. For instance:</p>
+
+<div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">"source"</span><span class="p">:</span>   <span class="s2">"lib"</span><span class="p">,</span>
+    <span class="nt">"output"</span><span class="p">:</span>   <span class="s2">"doc"</span><span class="p">,</span>
+    <span class="nt">"template"</span><span class="p">:</span> <span class="s2">"path/to/some/template.php"</span><span class="p">,</span>
+    <span class="nt">"css"</span><span class="p">:</span>      <span class="p">[</span><span class="s2">"stylesheet_1.css"</span><span class="p">,</span> <span class="s2">"path/to/stylesheet_2.css"</span><span class="p">],</span>
+    <span class="nt">"ignore"</span><span class="p">:</span>   <span class="s2">"/ignore\s+me\s+regex/i"</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3>Default values</h3>
+
+<p>All configuration values have a sensible default value so that you <em>don't have to</em>
+configure anything. Here is a list of all the default values for the different
+configuration options:</p>
+
+<ul>
+<li>
+<code>source</code>: <code>'src'</code>.</li>
+<li>
+<code>output</code>: <code>'output'</code>.</li>
+<li>
+<code>template</code>: A built-in template based on <a href="http://jashkenas.github.com/docco">Docco</a>'s template.</li>
+<li>
+<code>css</code>: A built-in stylesheet based on <a href="http://jashkenas.github.com/docco">Docco</a>'s stylesheet.</li>
+<li>
+<code>ignore</code>: <code>''</code> (an empty string). Nothing is ignored by default.</li>
+</ul><h2>Contributing</h2>
+
+<p><strong>Pinocchio</strong> is an Open Source project and hence any collaborations, suggestions or whatsoever
+are welcome. For any of those matters, please use the <a href="https://github.com/ncuesta/pinocchio/issues">Issues</a>
+or create Pull Requests.</p>
+
+<h2>License</h2>
+
+<p><strong>Pinocchio</strong> is licensed under the <strong>MIT</strong> License. Here you have the boring
+legal stuff:</p>
+
+<pre><code>Copyright (c) 2012 José Nahuel Cuesta Luengo
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS
+OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+</code></pre>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/ncuesta">ncuesta</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-33501638-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
