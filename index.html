@@ -124,6 +124,16 @@ file.</li>
 <li>
 <code>ignore</code> (<code>string</code>): A regular expression that if matched by any path
 inside the <code>source</code> directory, will exclude such path from the crawled files.</li>
+<li>
+<code>silent</code> (<code>boolean</code>): A value indicating whether the logger should be silent
+or output things.</li>
+<li>
+<code>logger</code> (<code>string</code>): A fully-qualified class name to use as Logger class.
+This class <em>should</em> implement <code>\Pinocchio\Logger\LoggerInterface</code>.</li>
+<li>
+<code>logger_opts</code> (<code>array</code>): A set of options that will be provided to the Logger
+upon its initialization. Note that the default Logger class does not take any
+option into account.</li>
 </ul><h3>Configuration as arguments</h3>
 
 <p>When running <strong>Pinocchio</strong> you can pass arguments that will be considered as
@@ -146,7 +156,8 @@ source. For instance:</p>
     <span class="nt">"output"</span><span class="p">:</span>   <span class="s2">"doc"</span><span class="p">,</span>
     <span class="nt">"template"</span><span class="p">:</span> <span class="s2">"path/to/some/template.php"</span><span class="p">,</span>
     <span class="nt">"css"</span><span class="p">:</span>      <span class="p">[</span><span class="s2">"stylesheet_1.css"</span><span class="p">,</span> <span class="s2">"path/to/stylesheet_2.css"</span><span class="p">],</span>
-    <span class="nt">"ignore"</span><span class="p">:</span>   <span class="s2">"/ignore\s+me\s+regex/i"</span>
+    <span class="nt">"ignore"</span><span class="p">:</span>   <span class="s2">"/ignore\s+me\s+regex/i"</span><span class="p">,</span>
+    <span class="nt">"silent"</span><span class="p">:</span>   <span class="kc">true</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -167,6 +178,13 @@ configuration options:</p>
 <code>css</code>: A built-in stylesheet based on <a href="http://jashkenas.github.com/docco">Docco</a>'s stylesheet.</li>
 <li>
 <code>ignore</code>: <code>''</code> (an empty string). Nothing is ignored by default.</li>
+<li>
+<code>silent</code>: <code>false</code>. Everything is logged by default. Don't worry, it's not <em>that</em> verbose.</li>
+<li>
+<code>logger</code>: <code>'\Pinocchio\Logger\StandardLogger'</code>. Default class, you can specify a fully-qualified
+one if you want. Please note that it should implement <code>\Pinocchio\Logger\LoggerInterface</code>.</li>
+<li>
+<code>logger_opts</code>: <code>[]</code> (an empty array). No options are provided to the logger by default.</li>
 </ul><h2>Contributing</h2>
 
 <p><strong>Pinocchio</strong> is an Open Source project and hence any collaborations, suggestions or whatsoever
