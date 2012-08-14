@@ -30,6 +30,13 @@ class Worker
     protected $configuration;
 
     /**
+     * Logger instance.
+     *
+     * @var \Pinocchio\Logger\LoggerInterface
+     */
+    protected $logger;
+
+    /**
      * Factory method for easy method chaining.
      *
      * @return Worker
@@ -55,15 +62,28 @@ class Worker
      */
     public function process()
     {
+        $logger = $this->getLogger();
+        $logger->log("Starting...\n");
+
         $formatter = $this->createFormatter();
         $parser    = $this->createParser();
         $outputDir = $this->configuration->get('output');
+        $sources   = $this->configuration->getSources();
+        $count     = count($sources);
 
-        foreach ($this->configuration->getSources() as $pinocchio) {
+        $logger->log("Using {$outputDir} as output directory.\n\n");
+
+        foreach ($sources as $pinocchio) {
             $outputFile = $outputDir . '/' . $pinocchio->getOutputFilename($outputDir);
 
+            $logger->log("Processing {$pinocchio->getTitle()} into {$outputFile}...");
+
             $formatter->format($parser->parse($pinocchio), $outputFile);
+
+            $logger->log(" Done\n");
         }
+
+        $logger->log("\nFinished processing {$count} source files.\n");
     }
 
     /**
@@ -102,5 +122,26 @@ class Worker
     public function createParser()
     {
         return new Php;
+    }
+
+    /**
+     * Get the Logger instance.
+     *
+     * @return \Pinocchio\Logger\LoggerInterface
+     */
+    public function getLogger()
+    {
+        if ($this->logger === null) {
+            if ($this->configuration->get('silent')) {
+                $this->logger = new Logger\NullLogger();
+            } else {
+                $loggerClass = $this->configuration->get('logger') ?: '\\Pinocchio\\Logger\\StandardLogger';
+                $loggerOpts  = $this->configuration->get('logger_options') ?: array();
+
+                $this->logger = new $loggerClass($loggerOpts);
+            }
+        }
+
+        return $this->logger;
     }
 }
