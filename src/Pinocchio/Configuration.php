@@ -68,7 +68,12 @@ class Configuration
     public function __construct($arguments = null)
     {
         if (null === $arguments) {
-            $arguments = getopt('', array('source:', 'output:'));
+            $arguments = getopt('', array('source:', 'output:', 'silent', 'logger:', 'logger_opts:'));
+
+            // Nasty workaround for `getopt()`'s denial to treat correctly flag options o_O
+            if (isset($arguments['silent'])) {
+                $arguments['silent'] = true;
+            }
         }
 
         $this

@@ -136,7 +136,7 @@ class Worker
                 $this->logger = new Logger\NullLogger();
             } else {
                 $loggerClass = $this->configuration->get('logger') ?: '\\Pinocchio\\Logger\\StandardLogger';
-                $loggerOpts  = $this->configuration->get('logger_options') ?: array();
+                $loggerOpts  = $this->configuration->get('logger_opts') ?: array();
 
                 $this->logger = new $loggerClass($loggerOpts);
             }

@@ -367,7 +367,23 @@ body .il { color: #666666 }                     /* Literal.Number.Integer.Long *
     <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$arguments</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="k">null</span> <span class="o">===</span> <span class="nv">$arguments</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nv">$arguments</span> <span class="o">=</span> <span class="nb">getopt</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;source:&#39;</span><span class="p">,</span> <span class="s1">&#39;output:&#39;</span><span class="p">));</span>
+            <span class="nv">$arguments</span> <span class="o">=</span> <span class="nb">getopt</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;source:&#39;</span><span class="p">,</span> <span class="s1">&#39;output:&#39;</span><span class="p">,</span> <span class="s1">&#39;silent&#39;</span><span class="p">,</span> <span class="s1">&#39;logger:&#39;</span><span class="p">,</span> <span class="s1">&#39;logger_opts:&#39;</span><span class="p">));</span>
+
+            
+</pre></div>                            </td>
+                        </tr>
+                                            <tr id="section-8">
+                            <td class="docs">
+                                <div class="pilwrap">
+                                    <a class="pilcrow" href="#section-8">&#182;</a>
+                                </div>
+                                <p>Nasty workaround for <code>getopt()</code>'s denial to treat correctly flag options o_O</p>
+                            </td>
+                            <td class="code">
+                                <div class="highlight"><pre>
+            <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$arguments</span><span class="p">[</span><span class="s1">&#39;silent&#39;</span><span class="p">]))</span> <span class="p">{</span>
+                <span class="nv">$arguments</span><span class="p">[</span><span class="s1">&#39;silent&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+            <span class="p">}</span>
         <span class="p">}</span>
 
         <span class="nv">$this</span>
@@ -378,10 +394,10 @@ body .il { color: #666666 }                     /* Literal.Number.Integer.Long *
     
 </pre></div>                            </td>
                         </tr>
-                                            <tr id="section-8">
+                                            <tr id="section-9">
                             <td class="docs">
                                 <div class="pilwrap">
-                                    <a class="pilcrow" href="#section-8">&#182;</a>
+                                    <a class="pilcrow" href="#section-9">&#182;</a>
                                 </div>
                                 <p>Get the value for <code>$key</code>.</p>
 
@@ -410,10 +426,10 @@ body .il { color: #666666 }                     /* Literal.Number.Integer.Long *
     
 </pre></div>                            </td>
                         </tr>
-                                            <tr id="section-9">
+                                            <tr id="section-10">
                             <td class="docs">
                                 <div class="pilwrap">
-                                    <a class="pilcrow" href="#section-9">&#182;</a>
+                                    <a class="pilcrow" href="#section-10">&#182;</a>
                                 </div>
                                 <p>Get the source files as an associative array.</p>
 
@@ -445,10 +461,10 @@ body .il { color: #666666 }                     /* Literal.Number.Integer.Long *
     
 </pre></div>                            </td>
                         </tr>
-                                            <tr id="section-10">
+                                            <tr id="section-11">
                             <td class="docs">
                                 <div class="pilwrap">
-                                    <a class="pilcrow" href="#section-10">&#182;</a>
+                                    <a class="pilcrow" href="#section-11">&#182;</a>
                                 </div>
                                 <p>Get the set of source Pinocchios that represent the source files
  for the current instance.</p>
@@ -476,10 +492,10 @@ body .il { color: #666666 }                     /* Literal.Number.Integer.Long *
     
 </pre></div>                            </td>
                         </tr>
-                                            <tr id="section-11">
+                                            <tr id="section-12">
                             <td class="docs">
                                 <div class="pilwrap">
-                                    <a class="pilcrow" href="#section-11">&#182;</a>
+                                    <a class="pilcrow" href="#section-12">&#182;</a>
                                 </div>
                                 <p>Set the arguments.</p>
 
@@ -500,10 +516,10 @@ body .il { color: #666666 }                     /* Literal.Number.Integer.Long *
     
 </pre></div>                            </td>
                         </tr>
-                                            <tr id="section-12">
+                                            <tr id="section-13">
                             <td class="docs">
                                 <div class="pilwrap">
-                                    <a class="pilcrow" href="#section-12">&#182;</a>
+                                    <a class="pilcrow" href="#section-13">&#182;</a>
                                 </div>
                                 <p>Get the default value for the configuration.</p>
 
@@ -526,10 +542,10 @@ body .il { color: #666666 }                     /* Literal.Number.Integer.Long *
     
 </pre></div>                            </td>
                         </tr>
-                                            <tr id="section-13">
+                                            <tr id="section-14">
                             <td class="docs">
                                 <div class="pilwrap">
-                                    <a class="pilcrow" href="#section-13">&#182;</a>
+                                    <a class="pilcrow" href="#section-14">&#182;</a>
                                 </div>
                                 <p>Initialize the non-customizable part of the configuration.</p>
 
@@ -549,10 +565,10 @@ body .il { color: #666666 }                     /* Literal.Number.Integer.Long *
     
 </pre></div>                            </td>
                         </tr>
-                                            <tr id="section-14">
+                                            <tr id="section-15">
                             <td class="docs">
                                 <div class="pilwrap">
-                                    <a class="pilcrow" href="#section-14">&#182;</a>
+                                    <a class="pilcrow" href="#section-15">&#182;</a>
                                 </div>
                                 <p>Load the configuration from the file -if any- and return it.</p>
 

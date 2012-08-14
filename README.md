@@ -92,6 +92,13 @@ Here is a list of all the configuration options and their acceptable values:
 * `css` (`array`): A set of CSS files to use inside the template.
 * `ignore` (`string`): A regular expression that if matched by any path
   inside the `source` directory, will exclude such path from the crawled files.
+* `silent` (`boolean`): A value indicating whether the logger should be silent
+  or output things.
+* `logger` (`string`): A fully-qualified class name to use as Logger class.
+  This class _should_ implement `\Pinocchio\Logger\LoggerInterface`.
+* `logger_opts` (`array`): A set of options that will be provided to the Logger
+  upon its initialization. Note that the default Logger class does not take any
+  option into account.
 
 ### Configuration as arguments
 
@@ -117,7 +124,8 @@ source. For instance:
     "output":   "doc",
     "template": "path/to/some/template.php",
     "css":      ["stylesheet_1.css", "path/to/stylesheet_2.css"],
-    "ignore":   "/ignore\s+me\s+regex/i"
+    "ignore":   "/ignore\s+me\s+regex/i",
+    "silent":   true
 }
 ```
 
@@ -132,6 +140,10 @@ configuration options:
 * `template`: A built-in template based on [Docco](http://jashkenas.github.com/docco)'s template.
 * `css`: A built-in stylesheet based on [Docco](http://jashkenas.github.com/docco)'s stylesheet.
 * `ignore`: `''` (an empty string). Nothing is ignored by default.
+* `silent`: `false`. Everything is logged by default. Don't worry, it's not *that* verbose.
+* `logger`: `'\Pinocchio\Logger\StandardLogger'`. Default class, you can specify a fully-qualified
+  one if you want. Please note that it should implement `\Pinocchio\Logger\LoggerInterface`.
+* `logger_opts`: `[]` (an empty array). No options are provided to the logger by default.
 
 ## Contributing
 
