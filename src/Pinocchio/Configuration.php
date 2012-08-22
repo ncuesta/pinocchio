@@ -119,7 +119,7 @@ class Configuration
             );
 
             foreach ($recursiveIterator as $file) {
-                if ($ignore && !preg_match($ignore, $file->getPathname())) {
+                if (!$ignore || !preg_match($ignore, $file->getPathname())) {
                     $sourceFiles[$file->getFilename()] = $file->getPathname();
                 }
             }
