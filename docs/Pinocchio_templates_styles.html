@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="ncuesta/pinocchio" />
+        <title>styles</title>
+                    <style>
+                                    /*--------------------- Layout and Typography ----------------------------*/
+body {
+  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, FreeSerif, serif;
+  font-size: 15px;
+  line-height: 22px;
+  color: #252519;
+  margin: 0; padding: 0;
+}
+a {
+  color: #261a3b;
+}
+  a:visited {
+    color: #261a3b;
+  }
+p {
+  margin: 0 0 15px 0;
+}
+h1, h2, h3, h4, h5, h6 {
+  margin: 40px 0 15px 0;
+}
+  h3, h4, h5, h6 {
+    margin-top: 20px;
+  }
+#container {
+  position: relative;
+}
+#background {
+  position: fixed;
+  top: 0; left: 575px; right: 0; bottom: 0;
+  background: #f5f5ff;
+  border-left: 1px solid #e5e5ee;
+  z-index: -1;
+}
+#jump_to, #jump_page {
+  background: white;
+  -webkit-box-shadow: 0 0 25px #777; -moz-box-shadow: 0 0 25px #777;
+  -webkit-border-bottom-left-radius: 5px; -moz-border-radius-bottomleft: 5px;
+  font: 10px Arial;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-align: right;
+}
+#jump_to, #jump_wrapper {
+  position: fixed;
+  right: 0; top: 0;
+  padding: 5px 10px;
+}
+  #jump_wrapper {
+    padding: 0;
+    display: none;
+  }
+    #jump_to:hover #jump_wrapper {
+      display: block;
+    }
+    #jump_page {
+      padding: 5px 0 3px;
+      margin: 0 0 25px 25px;
+      overflow:hidden;
+    }
+      #jump_page .source {
+        display: block;
+        padding: 5px 10px;
+        text-decoration: none;
+        border-top: 1px solid #eee;
+        float:left;
+        min-width:180px;
+        text-align:left;
+        text-transform:none;
+        font-size:11px;
+      }
+        #jump_page .source:hover {
+          background: #f5f5ff;
+        }
+        #jump_page .source:first-child {
+        }
+table td {
+  border: 0;
+  outline: 0;
+}
+  td.docs, th.docs {
+    max-width: 450px;
+    min-width: 450px;
+    min-height: 5px;
+    padding: 10px 25px 1px 50px;
+    overflow-x: hidden;
+    vertical-align: top;
+    text-align: left;
+  }
+    .docs pre {
+      margin: 15px 0 15px;
+      padding-left: 15px;
+    }
+    .docs p tt, .docs p code {
+      background: #f8f8ff;
+      border: 1px solid #dedede;
+      font-size: 12px;
+      padding: 0 0.2em;
+    }
+    .pilwrap {
+      position: relative;
+    }
+      .pilcrow {
+        font: 12px Arial;
+        text-decoration: none;
+        color: #454545;
+        position: absolute;
+        top: 3px; left: -20px;
+        padding: 1px 2px;
+        opacity: 0;
+        -webkit-transition: opacity 0.2s linear;
+      }
+        td.docs:hover .pilcrow {
+          opacity: 1;
+        }
+  td.code, th.code {
+    padding: 14px 15px 16px 25px;
+    width: 100%;
+    vertical-align: top;
+    background: #f5f5ff;
+    border-left: 1px solid #e5e5ee;
+  }
+    pre, tt, code {
+      font-size: 12px; line-height: 18px;
+      font-family: Monaco, Consolas, "Lucida Console", monospace;
+      margin: 0; padding: 0;
+    }
+
+
+/*---------------------- Syntax Highlighting -----------------------------*/
+td.linenos { background-color: #f0f0f0; padding-right: 10px; }
+span.lineno { background-color: #f0f0f0; padding: 0 5px 0 5px; }
+body .hll { background-color: #ffffcc }
+body .c { color: #408080; font-style: italic }  /* Comment */
+body .err { border: 1px solid #FF0000 }         /* Error */
+body .k { color: #954121 }                      /* Keyword */
+body .o { color: #666666 }                      /* Operator */
+body .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+body .cp { color: #BC7A00 }                     /* Comment.Preproc */
+body .c1 { color: #408080; font-style: italic } /* Comment.Single */
+body .cs { color: #408080; font-style: italic } /* Comment.Special */
+body .gd { color: #A00000 }                     /* Generic.Deleted */
+body .ge { font-style: italic }                 /* Generic.Emph */
+body .gr { color: #FF0000 }                     /* Generic.Error */
+body .gh { color: #000080; font-weight: bold }  /* Generic.Heading */
+body .gi { color: #00A000 }                     /* Generic.Inserted */
+body .go { color: #808080 }                     /* Generic.Output */
+body .gp { color: #000080; font-weight: bold }  /* Generic.Prompt */
+body .gs { font-weight: bold }                  /* Generic.Strong */
+body .gu { color: #800080; font-weight: bold }  /* Generic.Subheading */
+body .gt { color: #0040D0 }                     /* Generic.Traceback */
+body .kc { color: #954121 }                     /* Keyword.Constant */
+body .kd { color: #954121; font-weight: bold }  /* Keyword.Declaration */
+body .kn { color: #954121; font-weight: bold }  /* Keyword.Namespace */
+body .kp { color: #954121 }                     /* Keyword.Pseudo */
+body .kr { color: #954121; font-weight: bold }  /* Keyword.Reserved */
+body .kt { color: #B00040 }                     /* Keyword.Type */
+body .m { color: #666666 }                      /* Literal.Number */
+body .s { color: #219161 }                      /* Literal.String */
+body .na { color: #7D9029 }                     /* Name.Attribute */
+body .nb { color: #954121 }                     /* Name.Builtin */
+body .nc { color: #0000FF; font-weight: bold }  /* Name.Class */
+body .no { color: #880000 }                     /* Name.Constant */
+body .nd { color: #AA22FF }                     /* Name.Decorator */
+body .ni { color: #999999; font-weight: bold }  /* Name.Entity */
+body .ne { color: #D2413A; font-weight: bold }  /* Name.Exception */
+body .nf { color: #0000FF }                     /* Name.Function */
+body .nl { color: #A0A000 }                     /* Name.Label */
+body .nn { color: #0000FF; font-weight: bold }  /* Name.Namespace */
+body .nt { color: #954121; font-weight: bold }  /* Name.Tag */
+body .nv { color: #19469D }                     /* Name.Variable */
+body .ow { color: #AA22FF; font-weight: bold }  /* Operator.Word */
+body .w { color: #bbbbbb }                      /* Text.Whitespace */
+body .mf { color: #666666 }                     /* Literal.Number.Float */
+body .mh { color: #666666 }                     /* Literal.Number.Hex */
+body .mi { color: #666666 }                     /* Literal.Number.Integer */
+body .mo { color: #666666 }                     /* Literal.Number.Oct */
+body .sb { color: #219161 }                     /* Literal.String.Backtick */
+body .sc { color: #219161 }                     /* Literal.String.Char */
+body .sd { color: #219161; font-style: italic } /* Literal.String.Doc */
+body .s2 { color: #219161 }                     /* Literal.String.Double */
+body .se { color: #BB6622; font-weight: bold }  /* Literal.String.Escape */
+body .sh { color: #219161 }                     /* Literal.String.Heredoc */
+body .si { color: #BB6688; font-weight: bold }  /* Literal.String.Interpol */
+body .sx { color: #954121 }                     /* Literal.String.Other */
+body .sr { color: #BB6688 }                     /* Literal.String.Regex */
+body .s1 { color: #219161 }                     /* Literal.String.Single */
+body .ss { color: #19469D }                     /* Literal.String.Symbol */
+body .bp { color: #954121 }                     /* Name.Builtin.Pseudo */
+body .vc { color: #19469D }                     /* Name.Variable.Class */
+body .vg { color: #19469D }                     /* Name.Variable.Global */
+body .vi { color: #19469D }                     /* Name.Variable.Instance */
+body .il { color: #666666 }                     /* Literal.Number.Integer.Long */
+
+.docs .docparam {
+    color: #000080;
+    font-style: normal;
+}                            </style>
+            </head>
+    <body>
+        <div id="container">
+            <div id="background"></div>
+
+            <table cellpadding="0" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th class="docs">
+                            <h1>styles</h1>
+                        </th>
+                        <th class="code"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                                            <tr id="section-0">
+                            <td class="docs">
+                                <div class="pilwrap">
+                                    <a class="pilcrow" href="#section-0">&#182;</a>
+                                </div>
+                                
+                            </td>
+                            <td class="code">
+                                <div class="highlight"><pre><div class="highlight"><pre><span class="x">/*--------------------- Layout and Typography ----------------------------*/</span>
+<span class="x">body {</span>
+<span class="x">  font-family: &#39;Palatino Linotype&#39;, &#39;Book Antiqua&#39;, Palatino, FreeSerif, serif;</span>
+<span class="x">  font-size: 15px;</span>
+<span class="x">  line-height: 22px;</span>
+<span class="x">  color: #252519;</span>
+<span class="x">  margin: 0; padding: 0;</span>
+<span class="x">}</span>
+<span class="x">a {</span>
+<span class="x">  color: #261a3b;</span>
+<span class="x">}</span>
+<span class="x">  a:visited {</span>
+<span class="x">    color: #261a3b;</span>
+<span class="x">  }</span>
+<span class="x">p {</span>
+<span class="x">  margin: 0 0 15px 0;</span>
+<span class="x">}</span>
+<span class="x">h1, h2, h3, h4, h5, h6 {</span>
+<span class="x">  margin: 40px 0 15px 0;</span>
+<span class="x">}</span>
+<span class="x">  h3, h4, h5, h6 {</span>
+<span class="x">    margin-top: 20px;</span>
+<span class="x">  }</span>
+<span class="x">#container {</span>
+<span class="x">  position: relative;</span>
+<span class="x">}</span>
+<span class="x">#background {</span>
+<span class="x">  position: fixed;</span>
+<span class="x">  top: 0; left: 575px; right: 0; bottom: 0;</span>
+<span class="x">  background: #f5f5ff;</span>
+<span class="x">  border-left: 1px solid #e5e5ee;</span>
+<span class="x">  z-index: -1;</span>
+<span class="x">}</span>
+<span class="x">#jump_to, #jump_page {</span>
+<span class="x">  background: white;</span>
+<span class="x">  -webkit-box-shadow: 0 0 25px #777; -moz-box-shadow: 0 0 25px #777;</span>
+<span class="x">  -webkit-border-bottom-left-radius: 5px; -moz-border-radius-bottomleft: 5px;</span>
+<span class="x">  font: 10px Arial;</span>
+<span class="x">  text-transform: uppercase;</span>
+<span class="x">  cursor: pointer;</span>
+<span class="x">  text-align: right;</span>
+<span class="x">}</span>
+<span class="x">#jump_to, #jump_wrapper {</span>
+<span class="x">  position: fixed;</span>
+<span class="x">  right: 0; top: 0;</span>
+<span class="x">  padding: 5px 10px;</span>
+<span class="x">}</span>
+<span class="x">  #jump_wrapper {</span>
+<span class="x">    padding: 0;</span>
+<span class="x">    display: none;</span>
+<span class="x">  }</span>
+<span class="x">    #jump_to:hover #jump_wrapper {</span>
+<span class="x">      display: block;</span>
+<span class="x">    }</span>
+<span class="x">    #jump_page {</span>
+<span class="x">      padding: 5px 0 3px;</span>
+<span class="x">      margin: 0 0 25px 25px;</span>
+<span class="x">      overflow:hidden;</span>
+<span class="x">    }</span>
+<span class="x">      #jump_page .source {</span>
+<span class="x">        display: block;</span>
+<span class="x">        padding: 5px 10px;</span>
+<span class="x">        text-decoration: none;</span>
+<span class="x">        border-top: 1px solid #eee;</span>
+<span class="x">        float:left;</span>
+<span class="x">        min-width:180px;</span>
+<span class="x">        text-align:left;</span>
+<span class="x">        text-transform:none;</span>
+<span class="x">        font-size:11px;</span>
+<span class="x">      }</span>
+<span class="x">        #jump_page .source:hover {</span>
+<span class="x">          background: #f5f5ff;</span>
+<span class="x">        }</span>
+<span class="x">        #jump_page .source:first-child {</span>
+<span class="x">        }</span>
+<span class="x">table td {</span>
+<span class="x">  border: 0;</span>
+<span class="x">  outline: 0;</span>
+<span class="x">}</span>
+<span class="x">  td.docs, th.docs {</span>
+<span class="x">    max-width: 450px;</span>
+<span class="x">    min-width: 450px;</span>
+<span class="x">    min-height: 5px;</span>
+<span class="x">    padding: 10px 25px 1px 50px;</span>
+<span class="x">    overflow-x: hidden;</span>
+<span class="x">    vertical-align: top;</span>
+<span class="x">    text-align: left;</span>
+<span class="x">  }</span>
+<span class="x">    .docs pre {</span>
+<span class="x">      margin: 15px 0 15px;</span>
+<span class="x">      padding-left: 15px;</span>
+<span class="x">    }</span>
+<span class="x">    .docs p tt, .docs p code {</span>
+<span class="x">      background: #f8f8ff;</span>
+<span class="x">      border: 1px solid #dedede;</span>
+<span class="x">      font-size: 12px;</span>
+<span class="x">      padding: 0 0.2em;</span>
+<span class="x">    }</span>
+<span class="x">    .pilwrap {</span>
+<span class="x">      position: relative;</span>
+<span class="x">    }</span>
+<span class="x">      .pilcrow {</span>
+<span class="x">        font: 12px Arial;</span>
+<span class="x">        text-decoration: none;</span>
+<span class="x">        color: #454545;</span>
+<span class="x">        position: absolute;</span>
+<span class="x">        top: 3px; left: -20px;</span>
+<span class="x">        padding: 1px 2px;</span>
+<span class="x">        opacity: 0;</span>
+<span class="x">        -webkit-transition: opacity 0.2s linear;</span>
+<span class="x">      }</span>
+<span class="x">        td.docs:hover .pilcrow {</span>
+<span class="x">          opacity: 1;</span>
+<span class="x">        }</span>
+<span class="x">  td.code, th.code {</span>
+<span class="x">    padding: 14px 15px 16px 25px;</span>
+<span class="x">    width: 100%;</span>
+<span class="x">    vertical-align: top;</span>
+<span class="x">    background: #f5f5ff;</span>
+<span class="x">    border-left: 1px solid #e5e5ee;</span>
+<span class="x">  }</span>
+<span class="x">    pre, tt, code {</span>
+<span class="x">      font-size: 12px; line-height: 18px;</span>
+<span class="x">      font-family: Monaco, Consolas, &quot;Lucida Console&quot;, monospace;</span>
+<span class="x">      margin: 0; padding: 0;</span>
+<span class="x">    }</span>
+
+
+<span class="x">/*---------------------- Syntax Highlighting -----------------------------*/</span>
+<span class="x">td.linenos { background-color: #f0f0f0; padding-right: 10px; }</span>
+<span class="x">span.lineno { background-color: #f0f0f0; padding: 0 5px 0 5px; }</span>
+<span class="x">body .hll { background-color: #ffffcc }</span>
+<span class="x">body .c { color: #408080; font-style: italic }  /* Comment */</span>
+<span class="x">body .err { border: 1px solid #FF0000 }         /* Error */</span>
+<span class="x">body .k { color: #954121 }                      /* Keyword */</span>
+<span class="x">body .o { color: #666666 }                      /* Operator */</span>
+<span class="x">body .cm { color: #408080; font-style: italic } /* Comment.Multiline */</span>
+<span class="x">body .cp { color: #BC7A00 }                     /* Comment.Preproc */</span>
+<span class="x">body .c1 { color: #408080; font-style: italic } /* Comment.Single */</span>
+<span class="x">body .cs { color: #408080; font-style: italic } /* Comment.Special */</span>
+<span class="x">body .gd { color: #A00000 }                     /* Generic.Deleted */</span>
+<span class="x">body .ge { font-style: italic }                 /* Generic.Emph */</span>
+<span class="x">body .gr { color: #FF0000 }                     /* Generic.Error */</span>
+<span class="x">body .gh { color: #000080; font-weight: bold }  /* Generic.Heading */</span>
+<span class="x">body .gi { color: #00A000 }                     /* Generic.Inserted */</span>
+<span class="x">body .go { color: #808080 }                     /* Generic.Output */</span>
+<span class="x">body .gp { color: #000080; font-weight: bold }  /* Generic.Prompt */</span>
+<span class="x">body .gs { font-weight: bold }                  /* Generic.Strong */</span>
+<span class="x">body .gu { color: #800080; font-weight: bold }  /* Generic.Subheading */</span>
+<span class="x">body .gt { color: #0040D0 }                     /* Generic.Traceback */</span>
+<span class="x">body .kc { color: #954121 }                     /* Keyword.Constant */</span>
+<span class="x">body .kd { color: #954121; font-weight: bold }  /* Keyword.Declaration */</span>
+<span class="x">body .kn { color: #954121; font-weight: bold }  /* Keyword.Namespace */</span>
+<span class="x">body .kp { color: #954121 }                     /* Keyword.Pseudo */</span>
+<span class="x">body .kr { color: #954121; font-weight: bold }  /* Keyword.Reserved */</span>
+<span class="x">body .kt { color: #B00040 }                     /* Keyword.Type */</span>
+<span class="x">body .m { color: #666666 }                      /* Literal.Number */</span>
+<span class="x">body .s { color: #219161 }                      /* Literal.String */</span>
+<span class="x">body .na { color: #7D9029 }                     /* Name.Attribute */</span>
+<span class="x">body .nb { color: #954121 }                     /* Name.Builtin */</span>
+<span class="x">body .nc { color: #0000FF; font-weight: bold }  /* Name.Class */</span>
+<span class="x">body .no { color: #880000 }                     /* Name.Constant */</span>
+<span class="x">body .nd { color: #AA22FF }                     /* Name.Decorator */</span>
+<span class="x">body .ni { color: #999999; font-weight: bold }  /* Name.Entity */</span>
+<span class="x">body .ne { color: #D2413A; font-weight: bold }  /* Name.Exception */</span>
+<span class="x">body .nf { color: #0000FF }                     /* Name.Function */</span>
+<span class="x">body .nl { color: #A0A000 }                     /* Name.Label */</span>
+<span class="x">body .nn { color: #0000FF; font-weight: bold }  /* Name.Namespace */</span>
+<span class="x">body .nt { color: #954121; font-weight: bold }  /* Name.Tag */</span>
+<span class="x">body .nv { color: #19469D }                     /* Name.Variable */</span>
+<span class="x">body .ow { color: #AA22FF; font-weight: bold }  /* Operator.Word */</span>
+<span class="x">body .w { color: #bbbbbb }                      /* Text.Whitespace */</span>
+<span class="x">body .mf { color: #666666 }                     /* Literal.Number.Float */</span>
+<span class="x">body .mh { color: #666666 }                     /* Literal.Number.Hex */</span>
+<span class="x">body .mi { color: #666666 }                     /* Literal.Number.Integer */</span>
+<span class="x">body .mo { color: #666666 }                     /* Literal.Number.Oct */</span>
+<span class="x">body .sb { color: #219161 }                     /* Literal.String.Backtick */</span>
+<span class="x">body .sc { color: #219161 }                     /* Literal.String.Char */</span>
+<span class="x">body .sd { color: #219161; font-style: italic } /* Literal.String.Doc */</span>
+<span class="x">body .s2 { color: #219161 }                     /* Literal.String.Double */</span>
+<span class="x">body .se { color: #BB6622; font-weight: bold }  /* Literal.String.Escape */</span>
+<span class="x">body .sh { color: #219161 }                     /* Literal.String.Heredoc */</span>
+<span class="x">body .si { color: #BB6688; font-weight: bold }  /* Literal.String.Interpol */</span>
+<span class="x">body .sx { color: #954121 }                     /* Literal.String.Other */</span>
+<span class="x">body .sr { color: #BB6688 }                     /* Literal.String.Regex */</span>
+<span class="x">body .s1 { color: #219161 }                     /* Literal.String.Single */</span>
+<span class="x">body .ss { color: #19469D }                     /* Literal.String.Symbol */</span>
+<span class="x">body .bp { color: #954121 }                     /* Name.Builtin.Pseudo */</span>
+<span class="x">body .vc { color: #19469D }                     /* Name.Variable.Class */</span>
+<span class="x">body .vg { color: #19469D }                     /* Name.Variable.Global */</span>
+<span class="x">body .vi { color: #19469D }                     /* Name.Variable.Instance */</span>
+<span class="x">body .il { color: #666666 }                     /* Literal.Number.Integer.Long */</span>
+
+<span class="x">.docs .docparam {</span>
+<span class="x">    color: #000080;</span>
+<span class="x">    font-style: normal;</span>
+<span class="x">}</span>
+</pre></div>
+</pre></div>                            </td>
+                        </tr>
+                                    </tbody>
+            </table>
+        </div>
+    </body>
+</html>
