@@ -74,7 +74,7 @@ class Worker
         $logger->log("Using {$outputDir} as output directory.\n\n");
 
         foreach ($sources as $pinocchio) {
-            $outputFile = $outputDir . '/' . $pinocchio->getOutputFilename($outputDir);
+            $outputFile = $outputDir . '/' . $pinocchio->getOutputFilename($this->configuration->get('source'));
 
             $logger->log("Processing {$pinocchio->getTitle()} into {$outputFile}...");
 
