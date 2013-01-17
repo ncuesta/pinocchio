@@ -33,11 +33,13 @@
 <p><a href="http://travis-ci.org/ncuesta/pinocchio"><img src="https://secure.travis-ci.org/ncuesta/pinocchio.png?branch=master" alt="Build Status"></a></p>
 
 <p>Annotated Source generator for PHP (port of <a href="http://jashkenas.github.com/docco">Docco</a>). This library has been
-inspired by <a href="https://github.com/oneblackbear/phrocco">Phrocco</a></p>
+inspired by <a href="https://github.com/oneblackbear/phrocco">Phrocco</a>.</p>
 
 <p><strong>Pinocchio</strong> crawls the source files on a project and automatically generates
 annotated source HTML pages that serve both as self-documented projects and
 API-like documentation.</p>
+
+<p>You may see the <a href="http://ncuesta.github.com/pinocchio/docs/index.html">annotated source of <strong>Pinnochio</strong></a>, for an example.</p>
 
 <h2>Key benefits</h2>
 
@@ -45,7 +47,7 @@ API-like documentation.</p>
 <li>Easy to use</li>
 <li>Almost no requirements (only PHP &gt;= 5.3.6)</li>
 <li>Configurable and customizable</li>
-<li>Makes projects self-explaining</li>
+<li>Makes projects self-documented</li>
 </ul><h2>Installation</h2>
 
 <p>You can install <strong>Pinocchio</strong> using <a href="http://getcomposer.org">Composer</a>. It is
@@ -134,6 +136,15 @@ This class <em>should</em> implement <code>\Pinocchio\Logger\LoggerInterface</co
 <code>logger_opts</code> (<code>array</code>): A set of options that will be provided to the Logger
 upon its initialization. Note that the default Logger class does not take any
 option into account.</li>
+<li>
+<code>skip_index</code> (<code>boolean</code>): If <code>true</code>, no index file will be generated. Otherwise,
+an <code>index.html</code> file will be created at the <code>output</code> directory with links to the
+different files, as presented in the <code>index_template</code> template.</li>
+<li>
+<code>index_template</code> (<code>string</code>): The path to the template to use for the index file.
+Only applicable when <code>skip_index</code> is <code>true</code>.</li>
+<li>
+<code>index_title</code> (<code>string</code>): The title to add to the index file.</li>
 </ul><h3>Configuration as arguments</h3>
 
 <p>When running <strong>Pinocchio</strong> you can pass arguments that will be considered as
@@ -177,7 +188,7 @@ configuration options:</p>
 <li>
 <code>css</code>: A built-in stylesheet based on <a href="http://jashkenas.github.com/docco">Docco</a>'s stylesheet.</li>
 <li>
-<code>ignore</code>: <code>''</code> (an empty string). Nothing is ignored by default.</li>
+<code>ignore</code>: <code>'/^\./'</code>. Dot-files are ignored by default.</li>
 <li>
 <code>silent</code>: <code>false</code>. Everything is logged by default. Don't worry, it's not <em>that</em> verbose.</li>
 <li>
@@ -185,6 +196,12 @@ configuration options:</p>
 one if you want. Please note that it should implement <code>\Pinocchio\Logger\LoggerInterface</code>.</li>
 <li>
 <code>logger_opts</code>: <code>[]</code> (an empty array). No options are provided to the logger by default.</li>
+<li>
+<code>skip_index</code>: <code>false</code>.</li>
+<li>
+<code>index_template</code>: A built-in template that simply links to every parsed source file.</li>
+<li>
+<code>index_title</code>: <code>'Source files'</code>.</li>
 </ul><h2>Contributing</h2>
 
 <p><strong>Pinocchio</strong> is an Open Source project and hence any collaborations, suggestions or whatsoever
