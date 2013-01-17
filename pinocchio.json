@@ -1,3 +1,3 @@
 {
-    "ignore": "/templates/"
+    "ignore": "/(^\\.|templates|src\\/bootstrap.php)/"
 }
