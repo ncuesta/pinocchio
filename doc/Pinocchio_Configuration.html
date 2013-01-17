@@ -531,11 +531,14 @@ body .il { color: #666666 }                     /* Literal.Number.Integer.Long *
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getDefaults</span><span class="p">()</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="k">array</span><span class="p">(</span>
-            <span class="s1">&#39;source&#39;</span>         <span class="o">=&gt;</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;output&#39;</span>         <span class="o">=&gt;</span> <span class="s1">&#39;doc&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;template&#39;</span>       <span class="o">=&gt;</span> <span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/templates/template.php&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;css&#39;</span>            <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/templates/styles.css&#39;</span><span class="p">),</span>
-            <span class="s1">&#39;ignore&#39;</span>         <span class="o">=&gt;</span> <span class="s1">&#39;/^\./&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;source&#39;</span>          <span class="o">=&gt;</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;output&#39;</span>          <span class="o">=&gt;</span> <span class="s1">&#39;doc&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;template&#39;</span>        <span class="o">=&gt;</span> <span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/templates/template.php&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;css&#39;</span>             <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/templates/styles.css&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;ignore&#39;</span>          <span class="o">=&gt;</span> <span class="s1">&#39;/^\./&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;skip_index&#39;</span>      <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+            <span class="s1">&#39;index_template&#39;</span>  <span class="o">=&gt;</span> <span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/templates/index.php&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;index_title&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;Source files&#39;</span><span class="p">,</span>
         <span class="p">);</span>
     <span class="p">}</span>
 

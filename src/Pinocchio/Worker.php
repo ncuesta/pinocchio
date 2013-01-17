@@ -83,7 +83,34 @@ class Worker
             $logger->log(" Done\n");
         }
 
+        if (!$this->configuration->get('skipIndex')) {
+            $logger->log("\nCreating index page at {$outputDir}/index.html.\n");
+
+            $this->createIndexFile($sources, $outputDir);
+        }
+
         $logger->log("\nFinished processing {$count} source files.\n");
+    }
+
+    /**
+     * Create the index file for the provided $sources.
+     *
+     * @param  array  $sources   The set of sources to add to the index.
+     * @param  string $outputDir The target output directory.
+     */
+    public function createIndexFile($sources, $outputDir)
+    {
+      // Make the configuration available to the index template
+      $configuration = $this->configuration;
+
+      ob_start();
+      include($this->configuration->get('index_template'));
+
+      $indexContents = ob_get_clean();
+
+      $outputFile = $outputDir . '/index.html';
+
+      file_put_contents($outputFile, $indexContents);
     }
 
     /**

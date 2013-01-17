@@ -380,6 +380,12 @@ body .il { color: #666666 }                     /* Literal.Number.Integer.Long *
             <span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="s2">&quot; Done</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
         <span class="p">}</span>
 
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">configuration</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;skipIndex&#39;</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Creating index page at </span><span class="si">{</span><span class="nv">$outputDir</span><span class="si">}</span><span class="s2">/index.html.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createIndexFile</span><span class="p">(</span><span class="nv">$sources</span><span class="p">,</span> <span class="nv">$outputDir</span><span class="p">);</span>
+        <span class="p">}</span>
+
         <span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Finished processing </span><span class="si">{</span><span class="nv">$count</span><span class="si">}</span><span class="s2"> source files.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 
@@ -390,6 +396,49 @@ body .il { color: #666666 }                     /* Literal.Number.Integer.Long *
                             <td class="docs">
                                 <div class="pilwrap">
                                     <a class="pilcrow" href="#section-8">&#182;</a>
+                                </div>
+                                <p>Create the index file for the provided <code>$sources</code>.</p>
+
+<p><em class="docparam">@param</em> <code>array</code>   <code>$sources</code>   The set of sources to add to the index.</p>
+
+<p><em class="docparam">@param</em> <code>string</code>  <code>$outputDir</code> The target output directory.</p>
+                            </td>
+                            <td class="code">
+                                <div class="highlight"><pre>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">createIndexFile</span><span class="p">(</span><span class="nv">$sources</span><span class="p">,</span> <span class="nv">$outputDir</span><span class="p">)</span>
+    <span class="p">{</span>
+      
+</pre></div>                            </td>
+                        </tr>
+                                            <tr id="section-9">
+                            <td class="docs">
+                                <div class="pilwrap">
+                                    <a class="pilcrow" href="#section-9">&#182;</a>
+                                </div>
+                                <p>Make the configuration available to the index template</p>
+                            </td>
+                            <td class="code">
+                                <div class="highlight"><pre>
+      <span class="nv">$configuration</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">configuration</span><span class="p">;</span>
+
+      <span class="nb">ob_start</span><span class="p">();</span>
+      <span class="k">include</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">configuration</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;index_template&#39;</span><span class="p">));</span>
+
+      <span class="nv">$indexContents</span> <span class="o">=</span> <span class="nb">ob_get_clean</span><span class="p">();</span>
+
+      <span class="nv">$outputFile</span> <span class="o">=</span> <span class="nv">$outputDir</span> <span class="o">.</span> <span class="s1">&#39;/index.html&#39;</span><span class="p">;</span>
+
+      <span class="nb">file_put_contents</span><span class="p">(</span><span class="nv">$outputFile</span><span class="p">,</span> <span class="nv">$indexContents</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    
+</pre></div>                            </td>
+                        </tr>
+                                            <tr id="section-10">
+                            <td class="docs">
+                                <div class="pilwrap">
+                                    <a class="pilcrow" href="#section-10">&#182;</a>
                                 </div>
                                 <p>Create - if needed - the output directory provided by the configuration.</p>
 
@@ -414,10 +463,10 @@ body .il { color: #666666 }                     /* Literal.Number.Integer.Long *
     
 </pre></div>                            </td>
                         </tr>
-                                            <tr id="section-9">
+                                            <tr id="section-11">
                             <td class="docs">
                                 <div class="pilwrap">
-                                    <a class="pilcrow" href="#section-9">&#182;</a>
+                                    <a class="pilcrow" href="#section-11">&#182;</a>
                                 </div>
                                 <p>Create a Formatter and return it.</p>
 
@@ -434,10 +483,10 @@ body .il { color: #666666 }                     /* Literal.Number.Integer.Long *
     
 </pre></div>                            </td>
                         </tr>
-                                            <tr id="section-10">
+                                            <tr id="section-12">
                             <td class="docs">
                                 <div class="pilwrap">
-                                    <a class="pilcrow" href="#section-10">&#182;</a>
+                                    <a class="pilcrow" href="#section-12">&#182;</a>
                                 </div>
                                 <p>Create a PHP Parser and return it.</p>
 
@@ -454,10 +503,10 @@ body .il { color: #666666 }                     /* Literal.Number.Integer.Long *
     
 </pre></div>                            </td>
                         </tr>
-                                            <tr id="section-11">
+                                            <tr id="section-13">
                             <td class="docs">
                                 <div class="pilwrap">
-                                    <a class="pilcrow" href="#section-11">&#182;</a>
+                                    <a class="pilcrow" href="#section-13">&#182;</a>
                                 </div>
                                 <p>Get the Logger instance.</p>
 

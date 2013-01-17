@@ -3,18 +3,20 @@
 [![Build Status](https://secure.travis-ci.org/ncuesta/pinocchio.png?branch=master)](http://travis-ci.org/ncuesta/pinocchio)
 
 Annotated Source generator for PHP (port of [Docco](http://jashkenas.github.com/docco)). This library has been
-inspired by [Phrocco](https://github.com/oneblackbear/phrocco)
+inspired by [Phrocco](https://github.com/oneblackbear/phrocco).
 
 **Pinocchio** crawls the source files on a project and automatically generates
 annotated source HTML pages that serve both as self-documented projects and
 API-like documentation.
+
+You may see the [annotated source of **Pinnochio**](http://ncuesta.github.com/pinocchio/docs/index.html), for an example.
 
 ## Key benefits
 
 * Easy to use
 * Almost no requirements (only PHP >= 5.3.6)
 * Configurable and customizable
-* Makes projects self-explaining
+* Makes projects self-documented
 
 ## Installation
 
@@ -99,6 +101,12 @@ Here is a list of all the configuration options and their acceptable values:
 * `logger_opts` (`array`): A set of options that will be provided to the Logger
   upon its initialization. Note that the default Logger class does not take any
   option into account.
+* `skip_index` (`boolean`): If `true`, no index file will be generated. Otherwise,
+  an `index.html` file will be created at the `output` directory with links to the
+  different files, as presented in the `index_template` template.
+* `index_template` (`string`): The path to the template to use for the index file.
+  Only applicable when `skip_index` is `true`.
+* `index_title` (`string`): The title to add to the index file.
 
 ### Configuration as arguments
 
@@ -139,11 +147,14 @@ configuration options:
 * `output`: `'output'`.
 * `template`: A built-in template based on [Docco](http://jashkenas.github.com/docco)'s template.
 * `css`: A built-in stylesheet based on [Docco](http://jashkenas.github.com/docco)'s stylesheet.
-* `ignore`: `''` (an empty string). Nothing is ignored by default.
+* `ignore`: `'/^\./'`. Dot-files are ignored by default.
 * `silent`: `false`. Everything is logged by default. Don't worry, it's not *that* verbose.
 * `logger`: `'\Pinocchio\Logger\StandardLogger'`. Default class, you can specify a fully-qualified
   one if you want. Please note that it should implement `\Pinocchio\Logger\LoggerInterface`.
 * `logger_opts`: `[]` (an empty array). No options are provided to the logger by default.
+* `skip_index`: `false`.
+* `index_template`: A built-in template that simply links to every parsed source file.
+* `index_title`: `'Source files'`.
 
 ## Contributing
 

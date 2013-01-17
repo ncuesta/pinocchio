@@ -171,11 +171,14 @@ class Configuration
     public function getDefaults()
     {
         return array(
-            'source'         => 'src',
-            'output'         => 'doc',
-            'template'       => __DIR__ . '/templates/template.php',
-            'css'            => array(__DIR__ . '/templates/styles.css'),
-            'ignore'         => '/^\./',
+            'source'          => 'src',
+            'output'          => 'doc',
+            'template'        => __DIR__ . '/templates/template.php',
+            'css'             => array(__DIR__ . '/templates/styles.css'),
+            'ignore'          => '/^\./',
+            'skip_index'      => false,
+            'index_template'  => __DIR__ . '/templates/index.php',
+            'index_title'     => 'Source files',
         );
     }
 
