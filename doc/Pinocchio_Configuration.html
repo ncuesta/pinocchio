@@ -449,7 +449,7 @@ body .il { color: #666666 }                     /* Literal.Number.Integer.Long *
             <span class="p">);</span>
 
             <span class="k">foreach</span> <span class="p">(</span><span class="nv">$recursiveIterator</span> <span class="k">as</span> <span class="nv">$file</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nv">$ignore</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nb">preg_match</span><span class="p">(</span><span class="nv">$ignore</span><span class="p">,</span> <span class="nv">$file</span><span class="o">-&gt;</span><span class="na">getPathname</span><span class="p">()))</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$ignore</span> <span class="o">||</span> <span class="o">!</span><span class="nb">preg_match</span><span class="p">(</span><span class="nv">$ignore</span><span class="p">,</span> <span class="nv">$file</span><span class="o">-&gt;</span><span class="na">getPathname</span><span class="p">()))</span> <span class="p">{</span>
                     <span class="nv">$sourceFiles</span><span class="p">[</span><span class="nv">$file</span><span class="o">-&gt;</span><span class="na">getFilename</span><span class="p">()]</span> <span class="o">=</span> <span class="nv">$file</span><span class="o">-&gt;</span><span class="na">getPathname</span><span class="p">();</span>
                 <span class="p">}</span>
             <span class="p">}</span>
@@ -535,7 +535,7 @@ body .il { color: #666666 }                     /* Literal.Number.Integer.Long *
             <span class="s1">&#39;output&#39;</span>         <span class="o">=&gt;</span> <span class="s1">&#39;doc&#39;</span><span class="p">,</span>
             <span class="s1">&#39;template&#39;</span>       <span class="o">=&gt;</span> <span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/templates/template.php&#39;</span><span class="p">,</span>
             <span class="s1">&#39;css&#39;</span>            <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/templates/styles.css&#39;</span><span class="p">),</span>
-            <span class="s1">&#39;ignore&#39;</span>         <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;ignore&#39;</span>         <span class="o">=&gt;</span> <span class="s1">&#39;/^\./&#39;</span><span class="p">,</span>
         <span class="p">);</span>
     <span class="p">}</span>
 

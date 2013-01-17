@@ -175,7 +175,7 @@ class Configuration
             'output'         => 'doc',
             'template'       => __DIR__ . '/templates/template.php',
             'css'            => array(__DIR__ . '/templates/styles.css'),
-            'ignore'         => '',
+            'ignore'         => '/^\./',
         );
     }
 
